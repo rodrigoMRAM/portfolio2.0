@@ -50,7 +50,7 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className={`font-semibold text-gray-900 ${darkMode && 'dark-theme'}`}>Email</h3>
-                <p className={`text-gray-600 ${darkMode && 'dark-theme'}`}>rodrigomacielth@gmail.com</p>
+                <a href="mailto:rodrigomacielth@gmail.com" className={`text-gray-600 ${darkMode && 'dark-theme'}`}>rodrigomacielth@gmail.com</a>
               </div>
             </div>
             
@@ -60,7 +60,7 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className={`font-semibold text-gray-900 ${darkMode && 'dark-theme'}`}>{t('phone')}</h3>
-                <p className={`text-gray-600 ${darkMode && 'dark-theme'}`}>1130430451</p>
+                <a href='https://api.whatsapp.com/send?phone=541130430451&text=%C2%A1Hola%20Rodrigo!' target='_blank' className={`text-gray-600 ${darkMode && 'dark-theme'}`}>1130430451</a>
               </div>
             </div>
             

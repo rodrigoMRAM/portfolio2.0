@@ -17,6 +17,10 @@ import Irish from '../assets/img/irish.png';
 import Irish1 from '../assets/img/irish2.png'; 
 import Irish2 from '../assets/img/irish3.png'; 
 import Video from '../assets/videos/ayuda.mp4'; 
+import OttoVideo from '../assets/videos/otto.mp4'; 
+import TrelloVideo from '../assets/videos/trello.mp4'; 
+import TurneroVideo from '../assets/videos/turnero.mp4'; 
+import IrishVideo from '../assets/videos/irish.mp4'; 
 
 
  export const projects = (t) => [
@@ -36,8 +40,8 @@ import Video from '../assets/videos/ayuda.mp4';
       image: [Irish, Irish1, Irish2],
       technologies: ["Django", "JS"],
       github: "https://github.com/rodrigoMRAM/art-irish",
-      demo: "#",
-      video: Video
+      
+      video: IrishVideo
     },
     {
       title: "Ayuda animal",
@@ -45,16 +49,7 @@ import Video from '../assets/videos/ayuda.mp4';
       image: [Ayuda, Ayuda2, Ayuda3],
       technologies: ["Django", "JS", "CSS"],
       github: "https://github.com/LeanEze/Ayuda-Animal",
-      demo: "#",
-      // video: Video
-    },
-    {
-      title: "Turnero",
-      description: (t("projects_turnero")),
-      image: [Turnero, Turnero1, Turnero2],
-      technologies: ["Django", "JS", "Bootstrap"],
-      github: "https://github.com/rodrigoMRAM/turnero",
-      demo: "#",
+      
       video: Video
     },
     
@@ -64,8 +59,8 @@ import Video from '../assets/videos/ayuda.mp4';
       image: [Otto, Otto1, Otto2],
       technologies: ["Django", "JS"],
       github: "https://github.com/rodrigoMRAM/Web-Otto",
-      demo: "#",
-      video: Video
+      
+      video: OttoVideo
     },
     {
       title: "Trello",
@@ -73,8 +68,17 @@ import Video from '../assets/videos/ayuda.mp4';
       image: [Trello, Trello1, Trello2],
       technologies: ["Django", "React", "Drf"],
       github: "https://github.com/rodrigoMRAM/Trello",
-      demo: "#",
-      video: Video
+      
+      video: TrelloVideo
+    },
+    {
+      title: "Turnero",
+      description: (t("projects_turnero")),
+      image: [Turnero, Turnero1, Turnero2],
+      technologies: ["Django", "JS", "Bootstrap"],
+      github: "https://github.com/rodrigoMRAM/turnero",
+      
+      video: TurneroVideo
     },
    
     

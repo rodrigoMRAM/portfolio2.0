@@ -1,7 +1,8 @@
 
-import React from 'react';
+import React, {useState} from 'react';
 import { ExternalLink, Github, ImageOff } from 'lucide-react';
-import Video from '../assets/videos/ayuda.mp4'; 
+import Cancel from '../assets/img/cancel.svg'; 
+import Play from '../assets/img/play.svg'; 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -13,17 +14,24 @@ import { useTranslation } from 'react-i18next';
 
 const Projects = () => {
   const { darkMode, setDarkMode } = useTheme();
+  const [watch, setWatch] = useState(false);
+  const [pickedVideo, setPickedVideo] = useState(null);
   const { t } = useTranslation();
 
   const [ref, visible] = useInView({ threshold: 0.1 });
   const data = projects(t);
+console.log(pickedVideo)
+  const watchVideo = (video) => {
 
+    setWatch(!watch);
+    setPickedVideo(video);
+  }
 
   return (
     <section id="projects" className={`py-20 bg-gray-50 ${darkMode ? 'dark-theme' : ''} `}>
       <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 `}>
         <div ref={ref} className={`text-center mb-16 fade-in ${visible ? 'visible' : ''}`}  >
-          <h2 className={`text-4xl font-bold text-gray-900 mb-4  ${darkMode && 'dark-theme'}`}>Mis Proyectos</h2>
+          <h2 className={`text-4xl font-bold text-gray-900 mb-4  ${darkMode && 'dark-theme'}`}>{t('projects')}</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-6"></div>
           <p ref={ref} className={`text-lg text-gray-600 max-w-2xl mx-auto ${darkMode && 'dark-theme'} fade-in ${visible ? 'visible' : ''}`}>
             {t('projects_title')}
@@ -55,14 +63,7 @@ const Projects = () => {
                 </Swiper>
 
 
-                {/* <video
-                  autoplay
-                  className="absolute inset-0 w-full h-48 object-cover media-video"
-                  src={project.video}
-                  muted
-                  loop
-                  playsInline
-                /> */}
+               
               </div>
 
               <div className={`p-6 ${darkMode && 'bg-background'}`}>
@@ -86,16 +87,33 @@ const Projects = () => {
                     className={`flex items-center text-gray-600 hover:text-blue-600 transition-colors ${darkMode && 'bg-background'}`}
                   >
                     <Github className="w-5 h-5 mr-2" />
-                    Código
+                    {t('code')}
                   </a>
-                  <a
+                  {project.demo && (<a
                     href={project.demo}
                     target="_blank"
                     className={`flex items-center text-gray-600 hover:text-purple-600 transition-colors ${darkMode && 'bg-background'}`}
                   >
                     <ExternalLink className="w-5 h-5 mr-2" />
                     Demo
-                  </a>
+                  </a>)}
+                  {project.video && (<button
+                  type='button'
+                    onClick={()=>watchVideo(project.video)}
+                    className={`flex items-center text-gray-600 hover:text-purple-600 transition-colors ${darkMode && 'bg-background'} cursor-pointer`}
+                  >
+                   <img
+  class="w-5 h-5 mr-2 dark:invert-0 invert"
+  alt=""
+  src={`data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20height='24px'%20viewBox='0%20-960%20960%20960'%20width='24px'%20fill='%${darkMode ? '23FFFFFF' : '234A5565' }'%3e%3cpath%20d='m380-300%20280-180-280-180v360ZM480-80q-83%200-156-31.5T197-197q-54-54-85.5-127T80-480q0-83%2031.5-156T197-763q54-54%20127-85.5T480-880q83%200%20156%2031.5T763-763q54%2054%2085.5%20127T880-480q0%2083-31.5%20156T763-197q-54%2054-127%2085.5T480-80Zm0-80q134%200%20227-93t93-227q0-134-93-227t-227-93q-134%200-227%2093t-93%20227q0%20134%2093%20227t227%2093Zm0-320Z'/%3e%3c/svg%3e`}
+/>
+
+
+
+                    
+                    Play
+                  </button>)}
+                  
                 </div>
               </div>
             </div>
@@ -103,6 +121,20 @@ const Projects = () => {
           ))}
         </div>
       </div>
+      {watch && <div className='fixed flex flex-col gap-5 justify-center items-center top-0 left-0 right-0 bottom-0 margin-[0 auto] w-full h-screen bg-black/80 z-40' onClick={watchVideo}>
+
+      <video
+                  autoPlay 
+                  className="h-[400px]"
+                  src={pickedVideo}
+                  muted
+                  loop
+                  playsInline
+                  />
+
+                  <img src={Cancel} className='cursor-pointer' alt="" srcset="" width={40} onClick={watchVideo}/>
+                  </div> 
+                  }
       {/* <video autoplay src={Video} muted loop playsInline></video> */}
     </section>
   );
