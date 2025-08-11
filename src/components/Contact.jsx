@@ -6,23 +6,26 @@ import { useInView } from './useInView';
 import { useTranslation } from 'react-i18next';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-      const { darkMode, setDarkMode } = useTheme();
-      const [ref, visible] = useInView({ threshold: 0.1 });
-  const { t, i18n } = useTranslation();
-    const changeLanguage = (lng) => {
-      i18n.changeLanguage(lng);
-    };
+  const [formData, setFormData] = useState({ name: '',  message: '' });
+  const { darkMode } = useTheme();
+  const [ref, visible] = useInView({ threshold: 0.1 });
+  const { t } = useTranslation();
+  const WHATSAPP_NUMBER = "541130430451";
+  
+  const buildWhatsappUrl = ({ name, message }) => {
+    const text = `¡Hola Rodrigo! Soy ${name}.%0A%0A${message}`;
+    const safeText = encodeURIComponent(`¡Hola Rodrigo! Soy ${name}.\n\n${message}`);
+    return `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${safeText}`;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Formulario enviado:', formData);
-    alert('¡Mensaje enviado! Te contactaré pronto.');
-    setFormData({ name: '', email: '', message: '' });
+    if (!formData.name.trim() || !formData.message.trim()) return;
+    const url = buildWhatsappUrl(formData);
+    window.open(url, '_blank', 'noopener,noreferrer');
+    setFormData({ name: '',  message: '' });
   };
+  
 
   const handleChange = (e) => {
     setFormData({
@@ -87,8 +90,10 @@ const Contact = () => {
           </div>
           
           <form onSubmit={handleSubmit} className={`bg-white p-8 rounded-xl shadow-lg ${darkMode && 'bg-background'}`} >
-            <div className="space-y-6">
-              <div>
+            <div className="space-y-6 flex flex-col h-full justify-between">
+              <div className='space-y-6'>
+                <div>
+
                 <label htmlFor="name" className={`block text-sm font-medium text-gray-700 mb-2 ${darkMode && 'bg-background'}`}>
                   {t('form_name')}
                 </label>
@@ -101,25 +106,8 @@ const Contact = () => {
                   required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                   placeholder={t('form_name_placeholder')}
-                />
+                  />
               </div>
-              
-              <div>
-                <label htmlFor="email" className={`block text-sm font-medium text-gray-700 mb-2 ${darkMode && 'bg-background'}`} >
-                  {t('form_email')}
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                  placeholder="tu@email.com"
-                />
-              </div>
-              
               <div>
                 <label htmlFor="message" className={`block text-sm font-medium text-gray-700 mb-2 ${darkMode && 'bg-background'}`}>
                  {t('form_message')}
@@ -134,6 +122,7 @@ const Contact = () => {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
                   placeholder={t('form_message_placeholder')}
                 />
+              </div>
               </div>
               
               <button

@@ -90,13 +90,17 @@
   }
 }
 .dark-theme{
-  background: #101828;
+  background: #000000;
+  color: white;
+}
+.dark-theme2{
+  background: #0b0b0b;
   color: white;
 }
 
 .bg-background {
-  background-color: #0B121D;
-  background: #0B121D;
+  background-color: #18181B;
+  background: #18181B;
   color: white;
 }
 

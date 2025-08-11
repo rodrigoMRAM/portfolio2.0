@@ -11,7 +11,7 @@ const Footer = () => {
         i18n.changeLanguage(lng);
       };
   return (
-    <footer className="bg-gray-900 text-white py-12">
+    <footer className={` text-white py-12 ${darkMode ? "bg-background" :"bg-gray-900" }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <div className="mb-8">

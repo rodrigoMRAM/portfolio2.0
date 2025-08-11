@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import Imagen from '../assets/img/imagen1.png';
+import DH from '../assets/img/dh_certified.png';
 import Imagen2 from '../assets/img/imagen2.png';
 import Imagen3 from '../assets/img/imagen3.png';
 import Imagen4 from '../assets/img/imagen4.png';
@@ -21,12 +22,13 @@ const About = () => {
       const { darkMode, setDarkMode } = useTheme();
         const [ref, visible] = useInView({ threshold: 0.1 });
   const images = [
+    DH,
   Imagen,
+  Imagen6,
   Imagen2,
   Imagen3,
   Imagen4,
-  Imagen5,
-  Imagen6
+  Imagen5
 ];
 const { t, i18n } = useTranslation();
   const changeLanguage = (lng) => {
@@ -34,20 +36,20 @@ const { t, i18n } = useTranslation();
   };
     
   return (
-    <section id="about"  className={`py-20 bg-white ${darkMode && 'dark-theme' } `}>
+    <section id="about"  className={`py-20 bg-white ${darkMode && 'dark-theme2' } `}>
       <div ref={ref} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in ${visible ? 'visible' : ''}`}>
         <div className="text-center mb-16">
-          <h2 className={`text-4xl font-bold text-gray-900 mb-4 ${darkMode && 'dark-theme'}`}>{t('about_me')}</h2>
+          <h2 className={`text-4xl font-bold text-gray-900 mb-4 ${darkMode && 'dark-theme2'}`}>{t('about_me')}</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto"></div>
         </div>
         
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <p className={`text-lg text-gray-600 leading-relaxed ${darkMode && 'dark-theme'}`}>
+            <p className={`text-lg text-gray-600 leading-relaxed ${darkMode && 'dark-theme2'}`}>
               {t('about_me_t1')}
             </p>
             
-            <p className={`text-lg text-gray-600 leading-relaxed ${darkMode && 'dark-theme'}`}>
+            <p className={`text-lg text-gray-600 leading-relaxed ${darkMode && 'dark-theme2'}`}>
                {t('about_me_t2')}
             </p>
             
@@ -91,7 +93,7 @@ const { t, i18n } = useTranslation();
             <img
               src={src}
               alt={`Slide ${index}`}
-              className="w-full h-full object-contain bg-white"
+              className={`w-full h-full  bg-white ${index > 2  ? "object-contain" : "object-fill"}`}
             />
           </SwiperSlide>
         ))}
