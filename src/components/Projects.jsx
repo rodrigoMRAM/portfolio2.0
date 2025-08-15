@@ -20,12 +20,26 @@ const Projects = () => {
 
   const [ref, visible] = useInView({ threshold: 0.1 });
   const data = projects(t);
-console.log(pickedVideo)
   const watchVideo = (video) => {
 
     setWatch(!watch);
     setPickedVideo(video);
   }
+
+const eventGA =  (project, video)=> {
+  watchVideo(video)
+  dataLayer.push({
+  event: 'clicks_porftolio',
+  clicks: `${project} boton`
+})
+}
+
+const githubGA =  (title)=> {
+  dataLayer.push({
+  event: 'clicks_porftolio',
+  clicks: `${title} github`
+})
+}
 
   return (
     <section id="projects" className={`py-20 bg-gray-50 ${darkMode ? 'dark-theme' : ''} `}>
@@ -85,6 +99,7 @@ console.log(pickedVideo)
                   <a
                     href={project.github}
                     className={`flex items-center text-gray-600 hover:text-blue-600 transition-colors ${darkMode && 'bg-background'}`}
+                    onClick={()=>githubGA(project.title)}
                   >
                     <Github className="w-5 h-5 mr-2" />
                     {t('code')}
@@ -93,13 +108,14 @@ console.log(pickedVideo)
                     href={project.demo}
                     target="_blank"
                     className={`flex items-center text-gray-600 hover:text-purple-600 transition-colors ${darkMode && 'bg-background'}`}
+                    
                   >
                     <ExternalLink className="w-5 h-5 mr-2" />
                     Demo
                   </a>)}
                   {project.video && (<button
                   type='button'
-                    onClick={()=>watchVideo(project.video)}
+                    onClick={()=>eventGA(project.title, project.video)}
                     className={`flex items-center text-gray-600 hover:text-purple-600 transition-colors ${darkMode && 'bg-background'} cursor-pointer`}
                   >
                    <img

@@ -8,7 +8,6 @@ import spain from '../assets/img/es.png';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
     const { darkMode, setDarkMode } = useTheme();
-  console.log(darkMode)
 
   const scrollToSection = (sectionId) => {
     dataLayer.push({
