@@ -38,7 +38,7 @@ import IrishVideo from '../assets/videos/irish.mp4';
       title: "Estudio Irish",
       description: (t("projects_irish")),
       image: [Irish, Irish1, Irish2],
-      technologies: ["Django", "JS"],
+      technologies: ["Java", "React"],
       github: "https://github.com/rodrigoMRAM/art-irish",
       
       video: IrishVideo
