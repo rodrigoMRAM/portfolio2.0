@@ -9,7 +9,12 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
     const { darkMode, setDarkMode } = useTheme();
   console.log(darkMode)
+
   const scrollToSection = (sectionId) => {
+    dataLayer.push({
+  event: 'clicks_porftolio',
+  clicks: sectionId
+});
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -39,22 +44,23 @@ const Header = () => {
           
           {/* Desktop Navigation */}
           <nav className={`hidden md:flex space-x-8 ${darkMode ? 'text-white' : 'text-black'}`}>
-            <button onClick={() => scrollToSection('home')} className="cursor-pointer  hover:text-blue-600 transition-colors">
+            <button onClick={() => scrollToSection('home')} id='home_navbar' className="home_navbar cursor-pointer  hover:text-blue-600 transition-colors">
               {t('navbar_home')}
             </button>
-            <button onClick={() => scrollToSection('about')} className="cursor-pointer  hover:text-blue-600 transition-colors">
+            <button onClick={() => scrollToSection('about')} id='about_navbar' className="cursor-pointer  hover:text-blue-600 transition-colors">
               {t('navbar_about')}
             </button>
-            <button onClick={() => scrollToSection('projects')} className=" hover:text-blue-600 transition-colors">
+            <button onClick={() => scrollToSection('projects')} id='projects_navbar' className=" hover:text-blue-600 transition-colors">
               {t('navbar_projects')}
             </button>
-            <button onClick={() => scrollToSection('skills')} className="cursor-pointer  hover:text-blue-600 transition-colors">
+            <button onClick={() => scrollToSection('skills')} id='skills_navbar' className="cursor-pointer  hover:text-blue-600 transition-colors">
               {t('navbar_skills')}
             </button>
-            <button onClick={() => scrollToSection('contact')} className="cursor-pointer  hover:text-blue-600 transition-colors">
+            <button onClick={() => scrollToSection('contact')} id='contact_navbar' className="cursor-pointer  hover:text-blue-600 transition-colors">
               {t('navbar_contact')}
             </button>
              <button
+             id='dark-mode'
       onClick={() => setDarkMode(!darkMode)}
       className=""
     >
@@ -63,13 +69,14 @@ const Header = () => {
      {/* <button onClick={() => changeLanguage('en')}>EN</button>
       <button onClick={() => changeLanguage('es')}>ES</button> */}
       <label
-      className={`relative inline-block w-20 h-9 rounded-full cursor-pointer transition-colors duration-300 ${
+      className={`relative bg-[#101828] inline-block w-17 h-7 rounded-full cursor-pointer transition-colors duration-300 bg-gradient-to-r from-[#9810fa] to-[#155dfc] ${
         checked ? 'bg-[#101828]' : 'bg-[#101828]'
       }`}
     >
       <input
         type="checkbox"
         checked={checked}
+        id='language'
         onChange={toggleSwitch}
         className="sr-only"
       />
@@ -84,14 +91,14 @@ const Header = () => {
 
       {/* Círculo */}
       <div
-        className={`absolute top-1 left-1 w-7 h-7 bg-white rounded-full shadow-md transform transition-all duration-300 flex items-center justify-center overflow-hidden ${
+        className={`absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow-md transform transition-all duration-300 flex items-center justify-center overflow-hidden ${
           checked ? 'translate-x-10' : 'translate-x-0'
         }`}
       >
         <img
           src={checked ? ingles : spain}
           alt={checked ? 'English' : 'Español'}
-          className="object-contain"
+          className="object-cover w-5 h-5"
         />
       </div>
     </label>
@@ -110,23 +117,23 @@ const Header = () => {
         {isOpen && (
           <nav className="md:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4">
-              <button onClick={() => scrollToSection('home')} className=" hover:text-blue-600 transition-colors text-left">
+              <button onClick={() => scrollToSection('home')} id='home_mobile' className=" hover:text-blue-600 transition-colors text-left">
                 {t('navbar_home')}
               </button>
-              <button onClick={() => scrollToSection('about')} className=" hover:text-blue-600 transition-colors text-left">
+              <button onClick={() => scrollToSection('about')} id='about_mobile' className=" hover:text-blue-600 transition-colors text-left">
                 {t('navbar_about')}
               </button>
-              <button onClick={() => scrollToSection('projects')} className=" hover:text-blue-600 transition-colors text-left">
+              <button onClick={() => scrollToSection('projects')} id='projects_mobile' className=" hover:text-blue-600 transition-colors text-left">
                 {t('navbar_projects')}
               </button>
-              <button onClick={() => scrollToSection('skills')} className=" hover:text-blue-600 transition-colors text-left">
+              <button onClick={() => scrollToSection('skills')} id='skills_mobile' className=" hover:text-blue-600 transition-colors text-left">
                 {t('navbar_skills')}
               </button>
-              <button onClick={() => scrollToSection('contact')} className=" hover:text-blue-600 transition-colors text-left">
+              <button onClick={() => scrollToSection('contact')} id='contact_mobile' className=" hover:text-blue-600 transition-colors text-left">
                 {t('navbar_contact')}
               </button>
            
-        <div className='md:hidden flex justify-between gap-3'>
+        <div className='md:hidden flex justify-between gap-3' id='dark-mode_mobile'>
            <button
       onClick={() => setDarkMode(!darkMode)}
       className=""
@@ -136,13 +143,14 @@ const Header = () => {
      {/* <button onClick={() => changeLanguage('en')}>EN</button>
       <button onClick={() => changeLanguage('es')}>ES</button> */}
       <label
-      className={`relative inline-block w-20 h-9 rounded-full cursor-pointer transition-colors duration-300 ${
+      className={`relative bg-[#101828] inline-block w-17 h-7 rounded-full cursor-pointer transition-colors duration-300 bg-gradient-to-r from-[#9810fa] to-[#155dfc] ${
         checked ? 'bg-[#101828]' : 'bg-[#101828]'
       }`}
     >
       <input
         type="checkbox"
         checked={checked}
+        id='language'
         onChange={toggleSwitch}
         className="sr-only"
       />
@@ -157,14 +165,14 @@ const Header = () => {
 
       {/* Círculo */}
       <div
-        className={`absolute top-1 left-1 w-7 h-7 bg-white rounded-full shadow-md transform transition-all duration-300 flex items-center justify-center overflow-hidden ${
+        className={`absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow-md transform transition-all duration-300 flex items-center justify-center overflow-hidden ${
           checked ? 'translate-x-10' : 'translate-x-0'
         }`}
       >
         <img
           src={checked ? ingles : spain}
           alt={checked ? 'English' : 'Español'}
-          className="object-contain"
+          className="object-cover w-5 h-5"
         />
       </div>
     </label>

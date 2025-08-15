@@ -36,15 +36,15 @@ const Hero = () => {
           </p>
           
           <div className="flex justify-center space-x-6 mb-12">
-            <a href="https://github.com/rodrigoMRAM" target="_blank" rel="noopener noreferrer" 
+            <a href="https://github.com/rodrigoMRAM" target="_blank" rel="noopener noreferrer" id='github_hero'
                className="p-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
               <Github className="w-6 h-6 text-gray-700" />
             </a>
-            <a href="https://www.linkedin.com/in/rodrigo-alberto-maciel-15673b243/" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.linkedin.com/in/rodrigo-alberto-maciel-15673b243/" target="_blank" id='linkedin_hero' rel="noopener noreferrer"
                className="p-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
               <Linkedin className="w-6 h-6 text-blue-600" />
             </a>
-            <a href="mailto:rodrigomacielth@gmail.com"
+            <a href="mailto:rodrigomacielth@gmail.com" id='mail_hero'
                className="p-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
               <Mail className="w-6 h-6 text-gray-700" />
             </a>

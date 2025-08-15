@@ -22,6 +22,11 @@ const Contact = () => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.message.trim()) return;
     const url = buildWhatsappUrl(formData);
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+    event: 'contact_form',
+    name: formData.name
+  });
     window.open(url, '_blank', 'noopener,noreferrer');
     setFormData({ name: '',  message: '' });
   };
@@ -53,7 +58,7 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className={`font-semibold text-gray-900 ${darkMode && 'dark-theme'}`}>Email</h3>
-                <a href="mailto:rodrigomacielth@gmail.com" className={`text-gray-600 ${darkMode && 'dark-theme'}`}>rodrigomacielth@gmail.com</a>
+                <a href="mailto:rodrigomacielth@gmail.com" className={`text-gray-600 ${darkMode && 'dark-theme'}`} id='email'>rodrigomacielth@gmail.com</a>
               </div>
             </div>
             
@@ -63,7 +68,7 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className={`font-semibold text-gray-900 ${darkMode && 'dark-theme'}`}>{t('phone')}</h3>
-                <a href='https://api.whatsapp.com/send?phone=541130430451&text=%C2%A1Hola%20Rodrigo!' target='_blank' className={`text-gray-600 ${darkMode && 'dark-theme'}`}>1130430451</a>
+                <a href='https://api.whatsapp.com/send?phone=541130430451&text=%C2%A1Hola%20Rodrigo!' target='_blank' className={`text-gray-600 ${darkMode && 'dark-theme'}`} id='phone_whatsapp'>1130430451</a>
               </div>
             </div>
             
@@ -89,7 +94,7 @@ const Contact = () => {
             </div>
           </div>
           
-          <form onSubmit={handleSubmit} className={`bg-white p-8 rounded-xl shadow-lg ${darkMode && 'bg-background'}`} >
+          <form onSubmit={handleSubmit} id='contacto_form' className={`bg-white p-8 rounded-xl shadow-lg ${darkMode && 'bg-background'}`} >
             <div className="space-y-6 flex flex-col h-full justify-between">
               <div className='space-y-6'>
                 <div>
