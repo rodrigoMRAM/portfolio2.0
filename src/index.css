@@ -123,39 +123,16 @@
   transform: translateY(0);
 }
 
-
-
-/* .media-video {
-  display: none;
-  z-index: 10;
+.loader {
+  border: 4px solid rgba(255,255,255,0.2);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  animation: spin 0.8s linear infinite;
 }
 
-.video-show:hover .media-video {
-  display: block;
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
-.video-show:hover .media-image {
-  display: none;
-} */
-
-
-/* @layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-  }
-  
-  html {
-    scroll-behavior: smooth;
-  }
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-} */

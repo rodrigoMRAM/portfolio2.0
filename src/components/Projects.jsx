@@ -17,7 +17,8 @@ const Projects = () => {
   const [watch, setWatch] = useState(false);
   const [pickedVideo, setPickedVideo] = useState(null);
   const { t } = useTranslation();
-
+  const [loading, setLoading] = useState(true);
+  
   const [ref, visible] = useInView({ threshold: 0.1 });
   const data = projects(t);
   const watchVideo = (video) => {
@@ -113,22 +114,24 @@ const githubGA =  (title)=> {
                     <ExternalLink className="w-5 h-5 mr-2" />
                     Demo
                   </a>)}
-                  {project.video && (<button
-                  type='button'
-                    onClick={()=>eventGA(project.title, project.video)}
-                    className={`flex items-center text-gray-600 hover:text-purple-600 transition-colors ${darkMode && 'bg-background'} cursor-pointer`}
-                  >
-                   <img
-  class="w-5 h-5 mr-2 dark:invert-0 invert"
-  alt=""
-  src={`data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20height='24px'%20viewBox='0%20-960%20960%20960'%20width='24px'%20fill='%${darkMode ? '23FFFFFF' : '234A5565' }'%3e%3cpath%20d='m380-300%20280-180-280-180v360ZM480-80q-83%200-156-31.5T197-197q-54-54-85.5-127T80-480q0-83%2031.5-156T197-763q54-54%20127-85.5T480-880q83%200%20156%2031.5T763-763q54%2054%2085.5%20127T880-480q0%2083-31.5%20156T763-197q-54%2054-127%2085.5T480-80Zm0-80q134%200%20227-93t93-227q0-134-93-227t-227-93q-134%200-227%2093t-93%20227q0%20134%2093%20227t227%2093Zm0-320Z'/%3e%3c/svg%3e`}
-/>
+                  {project.video && (
+  <button
+    type='button'
+    onClick={() => eventGA(project.title, project.video)}
+    className={`flex items-center text-gray-600 hover:text-purple-600 transition-colors ${darkMode && 'bg-background'} cursor-pointer`}
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-5 h-5 mr-2 invert dark:invert-0"
+      viewBox="0 -960 960 960"
+      fill="currentColor" 
+    >
+      <path d="m380-300 280-180-280-180v360ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+    </svg>
+    Play
+  </button>
+)}
 
-
-
-                    
-                    Play
-                  </button>)}
                   
                 </div>
               </div>
@@ -137,20 +140,39 @@ const githubGA =  (title)=> {
           ))}
         </div>
       </div>
-      {watch && <div className='fixed flex flex-col gap-5 justify-center items-center top-0 left-0 right-0 bottom-0 margin-[0 auto] w-full h-screen bg-black/80 z-40' onClick={watchVideo}>
 
-      <video
-                  autoPlay 
-                  className="h-[400px]"
-                  src={pickedVideo}
-                  muted
-                  loop
-                  playsInline
-                  />
+{watch && (
+  <div
+    className='fixed flex flex-col gap-5 justify-center items-center top-0 left-0 right-0 bottom-0 m-[0 auto] w-full h-screen bg-black/80 z-40'
+    onClick={watchVideo}
+  >
+    {loading && (
+      <div className="text-white fixed flex flex-col gap-5 justify-center items-center top-0 left-0 right-0 bottom-0 m-[0 auto]">
+        <div className="loader mb-3"></div> {/* spinner CSS */}
+        <p>Cargando video...</p>
+      </div>
+    )}
 
-                  <img src={Cancel} className='cursor-pointer' alt="" srcset="" width={40} onClick={watchVideo}/>
-                  </div> 
-                  }
+    <video
+      autoPlay
+      className={`h-[400px] ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+      src={pickedVideo}
+      muted
+      loop
+      playsInline
+      onLoadedData={() => setLoading(false)}
+    />
+
+    <img
+      src={Cancel}
+      className='cursor-pointer'
+      alt="cerrar"
+      width={40}
+      onClick={watchVideo}
+    />
+  </div>
+)}
+
       {/* <video autoplay src={Video} muted loop playsInline></video> */}
     </section>
   );
