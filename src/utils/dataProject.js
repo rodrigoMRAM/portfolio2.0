@@ -66,7 +66,7 @@ import IrishVideo from '../assets/videos/irish.mp4';
       title: "Trello",
       description: (t("projects_trello")),
       image: [Trello, Trello1, Trello2],
-      technologies: ["Django", "React", "Drf"],
+      technologies: ["Django", "React", "DRF"],
       github: "https://github.com/rodrigoMRAM/Trello",
       
       video: TrelloVideo
