@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { ExternalLink, Github, ImageOff } from 'lucide-react';
 import Cancel from '../assets/img/cancel.svg'; 
 import Play from '../assets/img/play.svg'; 
@@ -21,6 +21,10 @@ const Projects = () => {
   
   const [ref, visible] = useInView({ threshold: 0.1 });
   const data = projects(t);
+useEffect(() => {
+  if (watch && pickedVideo) setLoading(true);
+}, [watch, pickedVideo]);
+
   const watchVideo = (video) => {
 
     setWatch(!watch);
@@ -148,19 +152,21 @@ const githubGA =  (title)=> {
   >
     {loading && (
       <div className="text-white fixed flex flex-col gap-5 justify-center items-center top-0 left-0 right-0 bottom-0 m-[0 auto]">
-        <div className="loader mb-3"></div> {/* spinner CSS */}
+        <div className="loader mb-3"></div>
         <p>Cargando video...</p>
       </div>
     )}
 
     <video
+      key={pickedVideo}                // 🔹 remount al cambiar la fuente
       autoPlay
       className={`h-[400px] ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
       src={pickedVideo}
       muted
       loop
       playsInline
-      onLoadedData={() => setLoading(false)}
+      onLoadStart={() => setLoading(true)}   // 🔹 arranca el loader
+      onLoadedData={() => setLoading(false)} // 🔹 oculta cuando está listo
     />
 
     <img
@@ -168,7 +174,7 @@ const githubGA =  (title)=> {
       className='cursor-pointer'
       alt="cerrar"
       width={40}
-      onClick={watchVideo}
+      onClick={(e) => { e.stopPropagation(); watchVideo(); }} // evita cerrar al clickear el ícono
     />
   </div>
 )}
