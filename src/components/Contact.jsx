@@ -25,7 +25,8 @@ const Contact = () => {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
     event: 'contact_form',
-    name: formData.name
+    name: formData.name,
+    message: formData.message
   });
     window.open(url, '_blank', 'noopener,noreferrer');
     setFormData({ name: '',  message: '' });
@@ -123,6 +124,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
+                  maxLength={100}
                   rows={5}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
                   placeholder={t('form_message_placeholder')}
