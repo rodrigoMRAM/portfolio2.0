@@ -10,6 +10,7 @@ i18n
         translation: {
           greeting: 'Hello',
           experience: 'Experiences',
+          achievement : 'Key Achievements',
           experience_subtittle: 'My journey in software development.',
           language: 'Language',
           navbar_home: 'Home',
@@ -102,6 +103,7 @@ i18n
           greeting: 'Hola',
           experience: 'Experiencias',
           experience_subtittle: 'Mi trayectoria en el desarrollo de software.',
+          achievement : 'Logros destacados',
           language: 'Idioma',
           navbar_home: 'Inicio',
           navbar_about: 'Sobre mí',

@@ -4,7 +4,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useTranslation } from 'react-i18next';
 import { useInView } from './useInView';
 
-const Timeline = ({ items,darkMode }) => {
+const Timeline = ({ items,darkMode,t }) => {
     const [ref, visible] = useInView({ threshold: 0.1 });
   
   return (
@@ -12,22 +12,22 @@ const Timeline = ({ items,darkMode }) => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" >
       <div className="relative ">
         {/* Línea vertical principal */}
-        <div className="absolute left-8 max-sm:left-4 top-0 bottom-0 w-0.5 bg-blue-600"></div>
+        <div className="absolute left-8 max-sm:left-3 top-0 bottom-0 w-0.5 bg-blue-600"></div>
         
         {items.map((item, index) => (
           <div key={index} className="relative mb-12 last:mb-0">
             {/* Punto en la línea */}
-            <div className="absolute left-6 max-sm:left-3 w-4 h-4 bg-blue-600 border-4 border-white rounded-full shadow-md z-10"></div>
+            <div className="absolute left-6 max-sm:left-0 w-4 h-4 bg-blue-600 border-4 border-white rounded-full shadow-md z-10"></div>
             
             {/* Icono */}
-            <div className="absolute left-4 max-sm:left-1 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center z-20">
+            <div className="absolute left-4 max-sm:left-[-2px] w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center z-20">
               {item.type === 'work' && <Briefcase className="w-4 h-4 text-white" />}
               {item.type === 'education' && <GraduationCap className="w-4 h-4 text-white" />}
               {item.type === 'award' && <Award className="w-4 h-4 text-white" />}
             </div>
             
             {/* Contenido */}
-            <div className={`ml-20 max-sm:ml-14  ${darkMode ? 'bg-background' : ''} rounded-lg border border-blue-600 shadow-sm p-6 hover:shadow-md transition-shadow`}>
+            <div className={`ml-20 max-sm:ml-10  ${darkMode ? 'bg-background' : ''} rounded-lg border border-blue-600 shadow-sm p-6 hover:shadow-md transition-shadow`}>
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
                 <h3 className={`text-lg font-semibold text-gray-900 ${darkMode ? 'bg-background' : ''}`}>
                   {item.title}
@@ -41,12 +41,12 @@ const Timeline = ({ items,darkMode }) => {
               <div className="flex items-center text-blue-600 font-medium mb-3">
                 {item.company && (
                   <>
-                    <span>{item.company}</span>
+                    <span className='w-max'>{item.company}</span>
                     {item.location && (
                       <>
                         <span className="mx-2">•</span>
                         <MapPin className="w-4 h-4 mr-1" />
-                        <span className="text-gray-500">{item.location}</span>
+                        <span className="text-gray-500 w-max">{item.location}</span>
                       </>
                     )}
                   </>
@@ -72,7 +72,7 @@ const Timeline = ({ items,darkMode }) => {
               
               {item.achievements && (
                 <div className="mt-4">
-                  <h4 className={`font-medium text-gray-900 mb-2 ${darkMode ? 'text-white' : ''}`} >Logros destacados:</h4>
+                  <h4 className={`font-medium text-gray-900 mb-2 ${darkMode ? 'text-white' : ''}`} >{t('achievement')}</h4>
                   <ul className={`list-disc list-inside text-gray-600 text-sm space-y-1 ${darkMode ? 'text-white' : ''}`}>
                     {item.achievements.map((achievement, achIndex) => (
                       <li key={achIndex}>{achievement}</li>
@@ -161,7 +161,7 @@ const WorkExperienceTimeline = () => {
         </p>
       </div>
 
-      <Timeline items={experienceData} darkMode={darkMode}/>
+      <Timeline items={experienceData} darkMode={darkMode} t={t}/>
     </div>
   );
 };
