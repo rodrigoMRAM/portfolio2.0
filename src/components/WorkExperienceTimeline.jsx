@@ -99,7 +99,7 @@ const WorkExperienceTimeline = () => {
     location: t("buenos_aires_location"),
     date: t("software_developer_date"),
     description: t("software_developer_description"),
-    technologies: ['React JS', 'Nest.js', '.NET', 'SQL Server', 'Google analytics'],
+    technologies: ['React JS', 'Nest JS', '.NET', 'SQL Server', 'Google analytics'],
     achievements: [t("software_developer_achievement"),t("software_developer_achievement1"),t("software_developer_achievement2")] // Retorna array directamente
   },
   {
@@ -109,7 +109,7 @@ const WorkExperienceTimeline = () => {
     location: t("remote_location"),
     date: t("frontend_specialization_date"),
     description: t("frontend_specialization_description"),
-    technologies: ['Next.js', 'Redux', 'Tailwind CSS', 'Docker', 'Selenium'],
+    technologies: ['Next JS', 'Redux', 'Tailwind CSS', 'Docker', 'Selenium'],
     achievements: [
       t("frontend_specialization_achievement"),
       t("frontend_specialization_achievement1"),
