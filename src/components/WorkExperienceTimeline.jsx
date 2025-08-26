@@ -15,10 +15,7 @@ const Timeline = ({ items,darkMode,t }) => {
         <div className="absolute left-8 max-sm:left-3 top-0 bottom-0 w-0.5 bg-blue-600"></div>
         
         {items.map((item, index) => (
-          <div key={index} className="relative mb-12 last:mb-0">
-            {/* Punto en la línea */}
-            <div className="absolute left-6 max-sm:left-0 w-4 h-4 bg-blue-600 border-4 border-white rounded-full shadow-md z-10"></div>
-            
+          <div key={index} className="relative mb-12 last:mb-0">            
             {/* Icono */}
             <div className="absolute left-4 max-sm:left-[-2px] w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center z-20">
               {item.type === 'work' && <Briefcase className="w-4 h-4 text-white" />}
