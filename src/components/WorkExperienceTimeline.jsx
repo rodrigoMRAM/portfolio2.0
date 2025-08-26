@@ -156,7 +156,7 @@ const WorkExperienceTimeline = () => {
           {t("experience")}
         </h1>
                 <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-6"></div>
-        <p className="text-xl ">
+        <p className={`text-xl text-gray-600 ${darkMode ? 'dark-theme2' : ''}`}>
           {t("experience_subtittle")}
         </p>
       </div>
