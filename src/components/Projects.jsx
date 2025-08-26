@@ -62,9 +62,9 @@ const githubGA =  (title)=> {
             <div
 
               key={index}
-              className={`video-show bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${darkMode && 'bg-background'}`}
+              className={`video-show bg-white  rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${darkMode && 'bg-background'}`}
             >
-              <div className="relative overflow-hidden media-container">
+              <div className="relative overflow-hidden media-container ">
                 <Swiper
                   pagination={{ clickable: true }}
                   modules={[Pagination, Navigation]}
@@ -85,7 +85,7 @@ const githubGA =  (title)=> {
                
               </div>
 
-              <div className={`p-6 ${darkMode && 'bg-background'}`}>
+              <div className={`p-6 ${darkMode && 'bg-background'} `}>
                 <h3 className={`text-xl font-bold text-gray-900 mb-3 ${darkMode && 'bg-background'}`}>{project.title}</h3>
                 <p className={`text-gray-600 mb-4 ${darkMode && 'bg-background'}`}>{project.description}</p>
 
