@@ -169,9 +169,9 @@ i18n
           animal_project_title: "Proyecto Ayuda Animal",
           animal_project_description: "Primera experiencia profesional desarrollando sitios web para clientes reales.",
           animal_project_date: "2022 - 2023",
-          animal_project_achievement1: "Desarrollo completo del sitio web",
-          animal_project_achievement2: "Manejo de servidor VPS con Linux y Nginx",
-          animal_project_achievement3: "Base de datos con PostgreSQL",
+          animal_project_achievement: "Desarrollo completo del sitio web",
+          animal_project_achievement1: "Manejo de servidor VPS con Linux y Nginx",
+          animal_project_achievement2: "Base de datos con PostgreSQL",
 
           // Operario Logístico
           logistics_operator_title: "Operario Logístico",
