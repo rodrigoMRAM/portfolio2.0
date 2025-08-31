@@ -70,7 +70,7 @@ import IrishVideo from '../assets/videos/irish.mp4';
       description: (t("barber_description")),
       image: [Barber, Barber1, Barber2],
       technologies: ["Next JS", "Tailwind"],
-      github: "https://github.com/rodrigoMRAM/turnero",
+      github: "https://github.com/rodrigoMRAM/barber-shop",
       demo: "https://barber-shop-azure.vercel.app/",
     },
     {
