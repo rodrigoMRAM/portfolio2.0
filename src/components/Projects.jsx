@@ -47,7 +47,7 @@ const githubGA =  (title)=> {
 }
 
   return (
-    <section id="projects" className={`py-20 bg-gray-50 ${darkMode ? 'dark-theme' : ''} `}>
+    <section ref={ref} id="projects" className={`py-20 bg-gray-50 ${darkMode ? 'dark-theme' : ''} ${visible ? 'visible' : ''}`}>
       <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 `}>
         <div ref={ref} className={`text-center mb-16 fade-in ${visible ? 'visible' : ''}`}  >
           <h2 className={`text-4xl font-bold text-gray-900 mb-4  ${darkMode && 'dark-theme'}`}>{t('projects')}</h2>
@@ -62,9 +62,9 @@ const githubGA =  (title)=> {
             <div
 
               key={index}
-              className={`video-show flex flex-wrap max-sm:flex-col-reverse max-w-7xl bg-white  rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all p-4 duration-300 hover:-translate-y-2 ${darkMode && 'bg-background'}`}
+              className={`video-show flex flex-wrap max-sm:flex-col-reverse max-w-7xl bg-white  rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all p-6 max-sm:p-0 duration-300 hover:-translate-y-2 ${darkMode && 'bg-background'}`}
             >
-              <div className={`p-6 ${darkMode && 'bg-background'} flex flex-col justify-between max-sm:w-full w-1/2`}>
+              <div className={`max-sm:p-6 ${darkMode && 'bg-background'} flex flex-col justify-between max-sm:w-full w-1/2`}>
                 <h3 className={`text-xl font-bold text-gray-900 mb-3 ${darkMode && 'bg-background'}`}>{project.title}</h3>
                 <p className={`text-gray-600 mb-4 ${darkMode && 'bg-background'}`}>{project.description}</p>
 
@@ -118,10 +118,11 @@ const githubGA =  (title)=> {
                   
                 </div>
               </div>
-              <div className="relative overflow-hidden media-container w-[50%] max-sm:w-full m-auto ">
+              <div className="relative overflow-hidden media-container w-[50%] max-sm:w-full m-auto z-50 media-image">
                 <Swiper
                   pagination={{ clickable: true }}
-                  modules={[Pagination, Navigation]}
+                  navigation
+                  modules={[ Navigation, Pagination]}
                   className="w-full h-[350px] max-sm:h-auto media-image"
                 >
                   {project.image.map((img, imgIndex) => (

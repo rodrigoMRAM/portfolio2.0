@@ -74,7 +74,7 @@ const { t, i18n } = useTranslation();
             </div>
           </div>
           
-          <div className="relative w-full h-96 rounded-2xl shadow-xl overflow-hidden">
+          <div className="relative w-full h-96 max-sm:h-[300px] rounded-2xl shadow-xl overflow-hidden">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         slidesPerView={1}
@@ -86,14 +86,14 @@ const { t, i18n } = useTranslation();
           delay: 1500,
           disableOnInteraction: false,
         }}
-        className="w-full h-full"
+        className="w-full h-full max-sm:h-[300px]"
       >
         {images.map((src, index) => (
           <SwiperSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index}`}
-              className={`w-full h-full  bg-white ${index > 2  ? "object-contain" : "object-fill"}`}
+              className={`w-full h-full max-sm:h-[300px] bg-white ${index > 2  ? "object-contain" : "object-fill"}`}
             />
           </SwiperSlide>
         ))}
