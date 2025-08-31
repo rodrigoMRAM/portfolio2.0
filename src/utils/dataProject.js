@@ -13,6 +13,9 @@ import Otto2 from '../assets/img/otto2.png';
 import Turnero from '../assets/img/turnero.png'; 
 import Turnero1 from '../assets/img/turnero1.png'; 
 import Turnero2 from '../assets/img/turnero2.png'; 
+import Barber from '../assets/img/barber.png'; 
+import Barber1 from '../assets/img/barber1.png'; 
+import Barber2 from '../assets/img/barber2.png'; 
 import Irish from '../assets/img/irish.png'; 
 import Irish1 from '../assets/img/irish2.png'; 
 import Irish2 from '../assets/img/irish3.png'; 
@@ -63,6 +66,14 @@ import IrishVideo from '../assets/videos/irish.mp4';
       video: OttoVideo
     },
     {
+      title: "Barber shop",
+      description: (t("barber_description")),
+      image: [Barber, Barber1, Barber2],
+      technologies: ["Next JS", "Tailwind"],
+      github: "https://github.com/rodrigoMRAM/turnero",
+      demo: "https://barber-shop-azure.vercel.app/",
+    },
+    {
       title: "Trello",
       description: (t("projects_trello")),
       image: [Trello, Trello1, Trello2],
@@ -79,7 +90,7 @@ import IrishVideo from '../assets/videos/irish.mp4';
       github: "https://github.com/rodrigoMRAM/turnero",
       
       video: TurneroVideo
-    },
+    }
    
     
   ];

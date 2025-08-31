@@ -54,22 +54,22 @@ const { t, i18n } = useTranslation();
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-              <div className="text-center p-6 bg-blue-50 rounded-lg">
+              <div className={`text-center p-6 border border-blue-600  rounded-lg ${darkMode && 'bg-background'}`}>
                 <Code className="w-8 h-8 text-blue-600 mx-auto mb-3" />
-                <h3 className="font-semibold text-gray-900 mb-2">{t('clean_code')}</h3>
-                <p className="text-sm text-gray-600">{t('clean_code_content')}</p>
+                <h3 className={`font-semibold text-gray-900 mb-2 ${darkMode && 'bg-background'}`}>{t('clean_code')}</h3>
+                {/* <p className={`text-sm text-gray-600 ${darkMode && 'bg-background'}`}>{t('clean_code_content')}</p> */}
               </div>
               
-              <div className="text-center p-6 bg-purple-50 rounded-lg">
+              <div className={`text-center p-6  border border-blue-600 rounded-lg ${darkMode && 'bg-background'}`}>
                 <Coffee className="w-8 h-8 text-purple-600 mx-auto mb-3" />
-                <h3 className="font-semibold text-gray-900 mb-2">{t('learning')}</h3>
-                <p className="text-sm text-gray-600">{t('learning_content')}</p>
+                <h3 className={`font-semibold text-gray-900 mb-2 ${darkMode && 'bg-background'}`}>{t('learning')}</h3>
+                {/* <p className={`text-sm text-gray-600 ${darkMode && 'bg-background'}`}>{t('learning_content')}</p> */}
               </div>
               
-              <div className="text-center p-6 bg-green-50 rounded-lg">
+              <div className={`text-center p-6  border border-blue-600 rounded-lg ${darkMode && 'bg-background'}`}>
                 <Heart className="w-8 h-8 text-green-600 mx-auto mb-3" />
-                <h3 className="font-semibold text-gray-900 mb-2">{t('passion')}</h3>
-                <p className="text-sm text-gray-600">{t('passion_content')}</p>
+                <h3 className={`font-semibold text-gray-900 mb-2 ${darkMode && 'bg-background'}`}>{t('passion')}</h3>
+                {/* <p className={`text-sm text-gray-600 ${darkMode && 'bg-background'}`}>{t('passion_content')}</p> */}
               </div>
             </div>
           </div>
