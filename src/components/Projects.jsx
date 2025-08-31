@@ -62,9 +62,9 @@ const githubGA =  (title)=> {
             <div
 
               key={index}
-              className={`video-show flex flex-wrap max-sm:flex-col-reverse max-w-7xl bg-white  rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all p-6 max-sm:p-0 duration-300 hover:-translate-y-2 ${darkMode && 'bg-background'}`}
+              className={`video-show flex gap-4 flex-wrap max-sm:flex-col-reverse max-w-7xl bg-white  rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all p-6 max-sm:p-0 duration-300 hover:-translate-y-2 ${darkMode && 'bg-background'}`}
             >
-              <div className={`max-sm:p-6 ${darkMode && 'bg-background'} flex flex-col justify-between max-sm:w-full w-1/2`}>
+              <div className={`max-sm:p-6 ${darkMode && 'bg-background'} flex flex-col justify-between max-sm:w-full w-[45%]`}>
                 <h3 className={`text-xl font-bold text-gray-900 mb-3 ${darkMode && 'bg-background'}`}>{project.title}</h3>
                 <p className={`text-gray-600 mb-4 ${darkMode && 'bg-background'}`}>{project.description}</p>
 
@@ -123,14 +123,14 @@ const githubGA =  (title)=> {
                   pagination={{ clickable: true }}
                   navigation
                   modules={[ Navigation, Pagination]}
-                  className="w-full h-[350px] max-sm:h-auto media-image"
+                  className="w-full h-[300px] max-sm:h-auto media-image"
                 >
                   {project.image.map((img, imgIndex) => (
                     <SwiperSlide key={imgIndex}>
                       <img
                         src={img}
                         alt={`${project.title} ${imgIndex + 1}`}
-                        className="w-full h-[350px] max-sm:h-auto object-contain"
+                        className="w-full h-[300px] max-sm:h-auto object-contain"
                       />
                     </SwiperSlide>
                   ))}
