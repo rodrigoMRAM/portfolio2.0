@@ -11,7 +11,7 @@ const Header = () => {
 
   const scrollToSection = (sectionId) => {
     dataLayer.push({
-  event: 'clicks_porftolio',
+  event: 'clicks_portfolio',
   clicks: sectionId
 });
     const element = document.getElementById(sectionId);

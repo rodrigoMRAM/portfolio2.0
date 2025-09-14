@@ -34,14 +34,14 @@ useEffect(() => {
 const eventGA =  (project, video)=> {
   watchVideo(video)
   dataLayer.push({
-  event: 'clicks_porftolio',
+  event: 'clicks_portfolio',
   clicks: `${project} boton`
 })
 }
 
 const githubGA =  (title)=> {
   dataLayer.push({
-  event: 'clicks_porftolio',
+  event: 'clicks_portfolio',
   clicks: `${title} github`
 })
 }
