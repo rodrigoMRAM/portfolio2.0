@@ -5,12 +5,10 @@ import { useInView } from './useInView';
 import { useTranslation } from 'react-i18next';
 
 const Skills = () => {
-      const { darkMode, setDarkMode } = useTheme();
+      const { darkMode } = useTheme();
       const [ref, visible] = useInView({ threshold: 0.1 });
-    const { t, i18n } = useTranslation();
-      const changeLanguage = (lng) => {
-        i18n.changeLanguage(lng);
-      };
+      const { t } = useTranslation();
+
   const skillCategories = [
     {
       title: "Frontend",

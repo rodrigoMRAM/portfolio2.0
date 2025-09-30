@@ -5,11 +5,9 @@ import { useTheme } from "../context/ThemeContext";
 import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
-      const { darkMode, setDarkMode } = useTheme();
-    const { t, i18n } = useTranslation();
-      const changeLanguage = (lng) => {
-        i18n.changeLanguage(lng);
-      };
+      const { darkMode } = useTheme();
+      const { t } = useTranslation();
+
   return (
     <footer className={` text-white py-12 ${darkMode ? "bg-background" :"bg-gray-900" }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

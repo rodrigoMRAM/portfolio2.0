@@ -13,7 +13,6 @@ const Contact = () => {
   const WHATSAPP_NUMBER = "541130430451";
   
   const buildWhatsappUrl = ({ name, message }) => {
-    const text = `¡Hola Rodrigo! Soy ${name}.%0A%0A${message}`;
     const safeText = encodeURIComponent(`¡Hola Rodrigo! Soy ${name}.\n\n${message}`);
     return `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${safeText}`;
   };

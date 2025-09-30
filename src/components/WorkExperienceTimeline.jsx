@@ -88,7 +88,7 @@ const Timeline = ({ items,darkMode,t }) => {
 
 // Componente principal con datos de ejemplo
 const WorkExperienceTimeline = () => {
-    const { darkMode, setDarkMode } = useTheme();
+    const { darkMode } = useTheme();
       const { t } = useTranslation();
   
   const experienceData = [

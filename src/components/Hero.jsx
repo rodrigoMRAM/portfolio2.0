@@ -2,12 +2,10 @@
 import React from 'react';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { useTheme } from "../context/ThemeContext";
-import { useInView } from './useInView';
 import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
-      const { darkMode, setDarkMode } = useTheme();
-      const [ref, visible] = useInView({ threshold: 0.1 });
+      const { darkMode,  } = useTheme();
       
   const scrollToAbout = () => {
     const element = document.getElementById('about');
@@ -15,10 +13,7 @@ const Hero = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
-   const { t, i18n } = useTranslation();
-    const changeLanguage = (lng) => {
-      i18n.changeLanguage(lng);
-    };
+   const { t } = useTranslation();
 
   return (
     <section id="home" className={`min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 pt-20 ${darkMode && 'dark-theme' } `}>

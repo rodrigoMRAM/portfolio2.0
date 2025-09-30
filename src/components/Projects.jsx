@@ -13,14 +13,16 @@ import { projects } from '../utils/dataProject';
 import { useTranslation } from 'react-i18next';
 
 const Projects = () => {
-  const { darkMode, setDarkMode } = useTheme();
+  const { darkMode } = useTheme();
   const [watch, setWatch] = useState(false);
   const [pickedVideo, setPickedVideo] = useState(null);
   const { t } = useTranslation();
   const [loading, setLoading] = useState(true);
-  
   const [ref, visible] = useInView({ threshold: 0.1 });
   const data = projects(t);
+  window.dataLayer = window.dataLayer || [];
+  const dataLayer = window.dataLayer;
+  
 useEffect(() => {
   if (watch && pickedVideo) setLoading(true);
 }, [watch, pickedVideo]);
