@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { useTheme } from "../context/ThemeContext";
 import { useInView } from './useInView';
 import { useTranslation } from 'react-i18next';
-
+import { contactGA } from '../analytics/analytics';
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '',  message: '' });
   const { darkMode } = useTheme();
@@ -21,12 +21,7 @@ const Contact = () => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.message.trim()) return;
     const url = buildWhatsappUrl(formData);
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-    event: 'contact_form',
-    name: formData.name,
-    message: formData.message
-  });
+    contactGA(formData.name, formData.message);
     window.open(url, '_blank', 'noopener,noreferrer');
     setFormData({ name: '',  message: '' });
   };

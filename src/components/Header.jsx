@@ -5,20 +5,16 @@ import { useTheme } from "../context/ThemeContext";
 import { useTranslation } from 'react-i18next';
 import ingles from '../assets/img/en.jpg';
 import spain from '../assets/img/es.png';
+import { clicksNavbar } from '../analytics/analytics';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { darkMode, setDarkMode } = useTheme();
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
 
-  window.dataLayer = window.dataLayer || [];
-  const dataLayer = window.dataLayer;
 
   const scrollToSection = (sectionId) => {
-    dataLayer.push({
-      event: 'clicks_portfolio',
-      clicks: sectionId
-    });
+   clicksNavbar(sectionId)
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });

@@ -11,7 +11,7 @@ import { useTheme } from "../context/ThemeContext";
 import { useInView } from './useInView';
 import { projects } from '../utils/dataProject';
 import { useTranslation } from 'react-i18next';
-
+import TagManager from "react-gtm-module";
 const Projects = () => {
   const { darkMode } = useTheme();
   const [watch, setWatch] = useState(false);
@@ -20,8 +20,6 @@ const Projects = () => {
   const [loading, setLoading] = useState(true);
   const [ref, visible] = useInView({ threshold: 0.1 });
   const data = projects(t);
-  window.dataLayer = window.dataLayer || [];
-  const dataLayer = window.dataLayer;
   
 useEffect(() => {
   if (watch && pickedVideo) setLoading(true);
@@ -33,20 +31,24 @@ useEffect(() => {
     setPickedVideo(video);
   }
 
-const eventGA =  (project, video)=> {
-  watchVideo(video)
-  dataLayer.push({
-  event: 'clicks_portfolio',
-  clicks: `${project} boton`
-})
-}
+const eventGA = (project, video) => {
+  watchVideo(video);
+  TagManager.dataLayer({
+    dataLayer: {
+      event: "clicks_portfolio",
+      button_label: `${project} boton`,
+    },
+  });
+};
 
-const githubGA =  (title)=> {
-  dataLayer.push({
-  event: 'clicks_portfolio',
-  clicks: `${title} github`
-})
-}
+const githubGA = (title) => {
+  TagManager.dataLayer({
+    dataLayer: {
+      event: "clicks_portfolio",
+      button_label: `${title} github`,
+    },
+  });
+};
 
   return (
     <section ref={ref} id="projects" className={`py-20 bg-gray-50 ${darkMode ? 'dark-theme' : ''} ${visible ? 'visible' : ''}`}>
@@ -83,6 +85,7 @@ const githubGA =  (title)=> {
 
                 <div className="flex space-x-4">
                   <a
+                  target='_blank'
                     href={project.github}
                     className={`flex items-center text-gray-600 hover:text-blue-600 transition-colors ${darkMode && 'bg-background'}`}
                     onClick={()=>githubGA(project.title)}
