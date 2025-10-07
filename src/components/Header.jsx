@@ -71,7 +71,7 @@ const Header = () => {
             <button onClick={() => scrollToSection('experience')} id='experience_navbar' className="cursor-pointer  hover:text-blue-600 transition-colors">
               {t('experience')}
             </button>
-            <button onClick={() => scrollToSection('projects')} id='projects_navbar' className=" hover:text-blue-600 transition-colors">
+            <button onClick={() => scrollToSection('projects')} id='projects_navbar' className=" hover:text-blue-600 transition-colors cursor-pointer">
               {t('navbar_projects')}
             </button>
             <button onClick={() => scrollToSection('skills')} id='skills_navbar' className="cursor-pointer  hover:text-blue-600 transition-colors">
