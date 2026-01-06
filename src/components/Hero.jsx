@@ -35,7 +35,7 @@ const Hero = () => {
                className="p-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
               <Github className="w-6 h-6 text-gray-700" />
             </a>
-            <a href="https://www.linkedin.com/in/rodrigo-alberto-maciel-15673b243/" target="_blank" id='linkedin_hero' rel="noopener noreferrer"
+            <a href="https://www.linkedin.com/in/rodrigoalbertomaciel/" target="_blank" id='linkedin_hero' rel="noopener noreferrer"
                className="p-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
               <Linkedin className="w-6 h-6 text-blue-600" />
             </a>

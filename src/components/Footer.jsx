@@ -26,7 +26,7 @@ const Footer = () => {
                className="p-3 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors">
               <Github className="w-5 h-5" />
             </a>
-            <a href="https://www.linkedin.com/in/rodrigo-alberto-maciel-15673b243/" id='linkedin_footer' target="_blank" rel="noopener noreferrer"
+            <a href="https://www.linkedin.com/in/rodrigoalbertomaciel/" id='linkedin_footer' target="_blank" rel="noopener noreferrer"
                className="p-3 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors">
               <Linkedin className="w-5 h-5" />
             </a>
