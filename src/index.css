@@ -4,6 +4,13 @@
 
 @layer base {
   :root {
+    --surface: 255 255 255;
+    --surface-muted: 248 250 252;
+    --text-primary: 15 23 42;
+    --text-secondary: 71 85 105;
+    --accent: 37 99 235;
+    --accent-soft: 219 234 254;
+    --border-subtle: 226 232 240;
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -52,6 +59,13 @@
   }
 
   .dark {
+    --surface: 24 24 27;
+    --surface-muted: 11 11 11;
+    --text-primary: 248 250 252;
+    --text-secondary: 203 213 225;
+    --accent: 96 165 250;
+    --accent-soft: 30 58 138;
+    --border-subtle: 63 63 70;
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
 
@@ -144,6 +158,41 @@
   width: 32px;
   height: 32px;
   animation: spin 0.8s linear infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  color: rgb(var(--text-primary));
+  background: rgb(var(--surface));
+}
+
+button,
+a,
+input,
+textarea {
+  outline-offset: 3px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(96, 165, 250, 0.75);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @keyframes spin {

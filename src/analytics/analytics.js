@@ -12,8 +12,6 @@ export const clicksNavbar = (sectionId) => {
 };
 
 export const eventGA = (project) => {
-    console.log(sectionId);
-
   TagManager.dataLayer({
     dataLayer: {
       event: "clicks_portfolio",

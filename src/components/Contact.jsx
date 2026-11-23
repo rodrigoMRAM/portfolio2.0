@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { contactGA } from '../analytics/analytics';
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '',  message: '' });
+  const [status, setStatus] = useState('');
   const { darkMode } = useTheme();
   const [ref, visible] = useInView({ threshold: 0.1 });
   const { t } = useTranslation();
@@ -23,6 +24,7 @@ const Contact = () => {
     const url = buildWhatsappUrl(formData);
     contactGA(formData.name, formData.message);
     window.open(url, '_blank', 'noopener,noreferrer');
+    setStatus(t('form_success'));
     setFormData({ name: '',  message: '' });
   };
   
@@ -118,13 +120,18 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  maxLength={100}
+                  maxLength={500}
                   rows={5}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
                   placeholder={t('form_message_placeholder')}
                 />
               </div>
               </div>
+              {status && (
+                <p role="status" className="text-sm text-green-600">
+                  {status}
+                </p>
+              )}
               
               <button
                 type="submit"

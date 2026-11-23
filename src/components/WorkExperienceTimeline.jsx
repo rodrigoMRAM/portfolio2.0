@@ -26,9 +26,16 @@ const Timeline = ({ items,darkMode,t }) => {
             {/* Contenido */}
             <div className={`ml-20 max-sm:ml-10  ${darkMode ? 'bg-background' : ''} rounded-lg border border-blue-600 shadow-sm p-6 hover:shadow-md transition-shadow`}>
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
-                <h3 className={`text-lg font-semibold text-gray-900 ${darkMode ? 'bg-background' : ''}`}>
-                  {item.title}
-                </h3>
+                <div className="flex items-center gap-2">
+                  <h3 className={`text-lg font-semibold text-gray-900 ${darkMode ? 'text-white' : ''}`}>
+                    {item.title}
+                  </h3>
+                  {item.current && (
+                    <span className="rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700">
+                      {t('current')}
+                    </span>
+                  )}
+                </div>
                 <div className={`flex items-center text-sm text-gray-500 mt-1 sm:mt-0 ${darkMode ? 'text-white' : ''}`}>
                   <Calendar className="w-4 h-4 mr-1" />
                   {item.date}
@@ -99,6 +106,7 @@ const WorkExperienceTimeline = () => {
     location: t("buenos_aires_location"),
     date: t("software_developer_date"),
     description: t("software_developer_description"),
+    current: true,
     technologies: ['React JS', 'Nest JS', '.NET', 'SQL Server', 'Google analytics'],
     achievements: [t("software_developer_achievement"),t("software_developer_achievement1"),t("software_developer_achievement2")] // Retorna array directamente
   },

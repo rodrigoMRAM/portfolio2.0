@@ -6,7 +6,7 @@ import Play from '../assets/img/play.svg';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Pagination, Navigation } from 'swiper/modules';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import { useTheme } from "../context/ThemeContext";
 import { useInView } from './useInView';
 import { projects } from '../utils/dataProject';
@@ -24,6 +24,15 @@ const Projects = () => {
 useEffect(() => {
   if (watch && pickedVideo) setLoading(true);
 }, [watch, pickedVideo]);
+
+useEffect(() => {
+  if (!watch) return undefined;
+  const handleEscape = (event) => {
+    if (event.key === 'Escape') setWatch(false);
+  };
+  window.addEventListener('keydown', handleEscape);
+  return () => window.removeEventListener('keydown', handleEscape);
+}, [watch]);
 
   const watchVideo = (video) => {
 
@@ -66,17 +75,19 @@ const githubGA = (title) => {
             <div
 
               key={index}
-              className={`video-show flex gap-4 flex-wrap max-sm:flex-col-reverse max-w-7xl bg-white  rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all p-6 max-sm:p-0 duration-300 hover:-translate-y-2 ${darkMode && 'bg-background'}`}
+              className={`video-show flex gap-8 flex-wrap max-sm:flex-col-reverse max-w-7xl bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-xl transition-all p-6 max-sm:p-0 duration-300 ${darkMode ? 'bg-background border-gray-700' : ''}`}
             >
               <div className={`max-sm:p-6 ${darkMode && 'bg-background'} flex flex-col justify-between max-sm:w-full w-[45%]`}>
-                <h3 className={`text-xl font-bold text-gray-900 mb-3 ${darkMode && 'bg-background'}`}>{project.title}</h3>
-                <p className={`text-gray-600 mb-4 ${darkMode && 'bg-background'}`}>{project.description}</p>
+                <div>
+                  <h3 className={`text-2xl font-bold text-gray-900 mb-3 ${darkMode && 'bg-background'}`}>{project.title}</h3>
+                  <p className={`text-gray-600 mb-4 leading-relaxed ${darkMode && 'text-gray-300'}`}>{project.description}</p>
+                </div>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 bg-blue-100 text-blue-600 text-sm rounded-full"
+                      className={`px-3 py-1 text-sm rounded-full ${darkMode ? 'bg-blue-950 text-blue-200' : 'bg-blue-50 text-blue-700'}`}
                     >
                       {tech}
                     </span>
@@ -85,7 +96,8 @@ const githubGA = (title) => {
 
                 <div className="flex space-x-4">
                   <a
-                  target='_blank'
+                    target='_blank'
+                    rel='noopener noreferrer'
                     href={project.github}
                     className={`flex items-center text-gray-600 hover:text-blue-600 transition-colors ${darkMode && 'bg-background'}`}
                     onClick={()=>githubGA(project.title)}
@@ -127,7 +139,8 @@ const githubGA = (title) => {
                 <Swiper
                   pagination={{ clickable: true }}
                   navigation
-                  modules={[ Navigation, Pagination]}
+                  modules={[Navigation, Pagination, Autoplay]}
+                  autoplay={{ delay: 3500, disableOnInteraction: false, pauseOnMouseEnter: true }}
                   className="w-full h-[300px] max-sm:h-auto media-image"
                 >
                   {project.image.map((img, imgIndex) => (
@@ -135,6 +148,7 @@ const githubGA = (title) => {
                       <img
                         src={img}
                         alt={`${project.title} ${imgIndex + 1}`}
+                        loading="lazy"
                         className="w-full h-[300px] max-sm:h-auto object-contain"
                       />
                     </SwiperSlide>
@@ -152,7 +166,10 @@ const githubGA = (title) => {
 
 {watch && (
   <div
-    className='fixed flex flex-col gap-5 justify-center items-center top-0 left-0 right-0 bottom-0 m-[0 auto] w-full h-screen bg-black/80 z-40'
+    role="dialog"
+    aria-modal="true"
+    aria-label="Video del proyecto"
+    className='fixed flex flex-col gap-5 justify-center items-center top-0 left-0 right-0 bottom-0 m-[0 auto] w-full h-screen bg-black/90 z-[60]'
     onClick={watchVideo}
   >
     {loading && (
@@ -170,6 +187,7 @@ const githubGA = (title) => {
       muted
       loop
       playsInline
+      preload="metadata"
       onLoadStart={() => setLoading(true)}   // 🔹 arranca el loader
       onLoadedData={() => setLoading(false)} // 🔹 oculta cuando está listo
     />
@@ -179,6 +197,9 @@ const githubGA = (title) => {
       className='cursor-pointer'
       alt="cerrar"
       width={40}
+      role="button"
+      tabIndex={0}
+      aria-label="Cerrar video"
       onClick={(e) => { e.stopPropagation(); watchVideo(); }} // evita cerrar al clickear el ícono
     />
   </div>
